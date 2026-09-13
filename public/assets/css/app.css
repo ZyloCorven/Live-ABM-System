@@ -1,0 +1,166 @@
+:root {
+    --primary: #4C1D95;
+    --primary-dark: #3B0F73;
+    --primary-light: #6D28D9;
+    --accent: #F59E0B;
+    --accent-dark: #D97706;
+    --success: #10B981;
+    --danger: #EF4444;
+    --soft-gray: #F3F4F6;
+    --card-radius: 16px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #FAFAFF 0%, #F3F4F6 100%);
+    color: #1F2937;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand, .fw-display {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ---------- Navbar ---------- */
+.app-navbar {
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+    box-shadow: 0 2px 12px rgba(76, 29, 149, 0.25);
+}
+.app-navbar .nav-link { color: rgba(255,255,255,.85); font-weight: 500; }
+.app-navbar .nav-link:hover { color: #fff; }
+
+.role-badge { text-transform: uppercase; font-size: .65rem; letter-spacing: .05em; padding: .35em .6em; }
+.role-admin { background: var(--danger); color: #fff; }
+.role-seller { background: var(--accent); color: #1F2937; }
+.role-bidder { background: var(--success); color: #fff; }
+
+.app-footer { background: var(--primary-dark); }
+
+/* ---------- Hero ---------- */
+.hero {
+    background: radial-gradient(circle at top right, var(--primary-light), var(--primary-dark) 70%);
+    color: #fff;
+    border-radius: 0 0 32px 32px;
+    padding: 4rem 0 5rem;
+}
+.hero h1 { font-weight: 800; font-size: clamp(2rem, 5vw, 3.25rem); }
+.hero .btn-accent { padding: .75rem 1.75rem; font-weight: 600; }
+
+/* ---------- Buttons ---------- */
+.btn-accent, .btn-warning {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border: none;
+    color: #1F2937;
+    font-weight: 600;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-accent:hover, .btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(245, 158, 11, 0.4);
+    color: #1F2937;
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+    border: none;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(76,29,149,.35); }
+
+/* ---------- Auction cards ---------- */
+.auction-card {
+    border: none;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(31, 41, 55, 0.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+    height: 100%;
+}
+.auction-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 30px rgba(76, 29, 149, 0.18);
+}
+.auction-card .card-img-top {
+    height: 190px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #E9D5FF, #FDE68A);
+}
+.auction-card .price-tag {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+}
+
+.status-badge { font-weight: 600; font-size: .72rem; letter-spacing: .03em; text-transform: uppercase; padding: .4em .75em; border-radius: 999px; }
+.status-upcoming { background: #E0E7FF; color: #3730A3; }
+.status-live { background: #DCFCE7; color: #15803D; animation: pulse-green 1.8s infinite; }
+.status-extended { background: #FFEDD5; color: #C2410C; animation: pulse-orange 1.8s infinite; }
+.status-ended { background: #E5E7EB; color: #374151; }
+.status-sold { background: #DBEAFE; color: #1D4ED8; }
+.status-cancelled { background: #FEE2E2; color: #B91C1C; }
+
+@keyframes pulse-green {
+    0%   { box-shadow: 0 0 0 0 rgba(16,185,129,.5); }
+    70%  { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+    100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+@keyframes pulse-orange {
+    0%   { box-shadow: 0 0 0 0 rgba(249,115,22,.5); }
+    70%  { box-shadow: 0 0 0 6px rgba(249,115,22,0); }
+    100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+}
+
+/* ---------- Auction detail / bidding ---------- */
+.bid-panel {
+    border-radius: var(--card-radius);
+    background: linear-gradient(160deg, #ffffff, #F5F3FF);
+    border: 1px solid #EDE9FE;
+    box-shadow: 0 6px 24px rgba(76,29,149,.1);
+}
+.highest-bid-display {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+}
+.countdown {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--accent-dark);
+}
+.countdown.urgent { color: var(--danger); animation: pulse-orange 1s infinite; }
+
+.bid-history-item { border-left: 3px solid var(--primary-light); padding: .5rem .9rem; margin-bottom: .4rem; background: #fff; border-radius: 8px; }
+.bid-history-item.leading { border-left-color: var(--accent); background: #FFFBEB; }
+
+/* ---------- Stat cards (dashboards) ---------- */
+.stat-card {
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+.stat-card .stat-icon { font-size: 2.2rem; opacity: .35; position: absolute; right: 1rem; top: 1rem; }
+.stat-card .stat-value { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; }
+.stat-card.grad-purple { background: linear-gradient(135deg, #7C3AED, #4C1D95); }
+.stat-card.grad-orange { background: linear-gradient(135deg, #FB923C, #C2410C); }
+.stat-card.grad-green  { background: linear-gradient(135deg, #34D399, #059669); }
+.stat-card.grad-blue   { background: linear-gradient(135deg, #60A5FA, #1D4ED8); }
+
+/* ---------- POS ---------- */
+.pos-screen {
+    background: linear-gradient(160deg, #ffffff, #F5F3FF);
+    border-radius: var(--card-radius);
+    box-shadow: 0 6px 24px rgba(76,29,149,.12);
+}
+.invoice-box { background: #fff; border-radius: var(--card-radius); box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+
+.table thead { background: var(--soft-gray); }
+
+/* ---------- Auth cards ---------- */
+.auth-card { border-radius: var(--card-radius); box-shadow: 0 10px 30px rgba(76,29,149,.15); border: none; }
+
+/* Toast container */
+.toast-stack { position: fixed; top: 1rem; right: 1rem; z-index: 1080; }
